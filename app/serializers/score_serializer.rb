@@ -1,5 +1,5 @@
 class ScoreSerializer < ActiveModel::Serializer
-  attributes :score, :difficulty, :username, :rank
+  attributes :score, :difficulty, :username, :rank, :created_at
 
   def rank
     object.get_rank + 1
