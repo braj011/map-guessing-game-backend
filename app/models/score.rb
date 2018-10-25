@@ -5,7 +5,7 @@ class Score < ApplicationRecord
   validates :difficulty, inclusion: { in: %w(easy medium hard), message: "must be one of easy, medium or hard." }
 
   def self.ranked_scores
-    Score.order(score: :desc)
+    Score.order(score: :desc, created_at: :asc)
   end
 
   def get_rank
