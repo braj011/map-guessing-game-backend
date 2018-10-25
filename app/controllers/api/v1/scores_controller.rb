@@ -14,7 +14,6 @@ class Api::V1::ScoresController < ApplicationController
     if params[:username] == ""
       @score.errors.add(:user_id)
     else
-      puts 'Testing'
       @score.user = User.find_or_create_by(name: params[:username])
     end
     if @score.save
