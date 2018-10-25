@@ -1,7 +1,7 @@
 class Api::V1::AreasController < ApplicationController
 
   def index
-    @area = Area.order("RANDOM()").limit(12)
+    @area = Area.order("RANDOM()").limit(10)
     render json: @area
   end
 
