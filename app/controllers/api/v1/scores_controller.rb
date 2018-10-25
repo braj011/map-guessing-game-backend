@@ -11,12 +11,19 @@ class Api::V1::ScoresController < ApplicationController
       difficulty: params[:difficulty],
       score: params[:score]
     })
-    @score.user = User.find_or_create_by(name: params[:username])
+    if params[:username] == ""
+      @score.errors.add(:user_id)
+    else
+      puts 'Testing'
+      @score.user = User.find_or_create_by(name: params[:username])
+    end
     if @score.save
       render json: @score.scores_around
     else
-      render json: { error: 'Could not save. ' + @score.errors.full_messages }
+      render json: @score.errors.full_messages
     end
   end
+
+
 
 end

@@ -1,6 +1,8 @@
 class Score < ApplicationRecord
   belongs_to :user
   belongs_to :area
+  validates :user_id, :score, :difficulty, :area_id, presence: true
+  validates :difficulty, inclusion: { in: %w(easy medium hard), message: "must be one of easy, medium or hard." }
 
   def self.ranked_scores
     Score.order(score: :desc)
