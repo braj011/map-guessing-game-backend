@@ -1,10 +1,8 @@
 class Api::V1::ScoresController < ApplicationController
 
   def index
-    # @scores = Score.order(score: :desc)
-    # render json: @scores
-    @scores_around = Score.find(1).scores_around
-    render json: @scores_around
+    @scores = Score.order(score: :desc).limit(10)
+    render json: @scores
   end
 
   def create
