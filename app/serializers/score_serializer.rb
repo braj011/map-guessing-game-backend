@@ -1,9 +1,12 @@
 class ScoreSerializer < ActiveModel::Serializer
-  attributes :score, :difficulty, :user
-  belongs_to :user
+  attributes :score, :difficulty, :username, :rank
 
-    class UserSerializer < ActiveModel::Serializer
-      attributes :name
-    end  
+  def rank
+    object.get_rank + 1
+  end
+
+  def username
+    object.user.name
+  end
 
 end

@@ -1,8 +1,10 @@
 class Api::V1::ScoresController < ApplicationController
 
   def index
-    @scores = Score.first(10)
-    render json: @scores
+    # @scores = Score.order(score: :desc)
+    # render json: @scores
+    @scores_around = Score.find(1).scores_around
+    render json: @scores_around
   end
 
   def create
@@ -13,17 +15,10 @@ class Api::V1::ScoresController < ApplicationController
     })
     @score.user = User.find_or_create_by(name: params[:username])
     if @score.save
-      render json: @score
+      render json: score.scores_around
     else
       render json: { error: 'Could not save. ' + @score.errors.full_messages }
     end
   end
-
-  private
-
-  def score_params
-    params.permit(:area_id, :username, :difficulty, :score)
-  end
-
 
 end
