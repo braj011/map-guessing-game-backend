@@ -5,10 +5,6 @@ class Api::V1::ScoresController < ApplicationController
     render json: @scores
   end
 
-  def serialize(scores)
-    ActiveModelSerializers::SerializableResource.new(scores).as_json
-  end
-
   def create
     @score = Score.new({
       area_id: params[:area_id],
@@ -25,8 +21,7 @@ class Api::V1::ScoresController < ApplicationController
     else
       render json: @score.errors.full_messages
     end
+    File.delete("public/maps/" + params[:filename].to_str + ".png")
   end
-
-
 
 end
