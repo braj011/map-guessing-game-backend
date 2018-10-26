@@ -11,7 +11,6 @@ class Image
     @difficulty = difficulty
     @lat = winner.latitude
     @lon = winner.longitude
-    puts google_url
     data = open(self.google_url)
     IO.copy_stream(data, "tmp/#{@filename}.png")
   end
