@@ -2,6 +2,7 @@ class Score < ApplicationRecord
   belongs_to :user
   belongs_to :area
   validates :user_id, :score, :difficulty, :area_id, presence: true
+  validates :score, numericality: { less_than_or_equal_to: 2000 }
   validates :difficulty, inclusion: { in: %w(easy medium hard), message: "must be one of easy, medium or hard." }
 
   def self.ranked_scores
@@ -20,11 +21,10 @@ class Score < ApplicationRecord
     rank = self.get_rank
     if self.rank_from_bottom <= 6
       offset = rank - (10 - self.rank_from_bottom)
-    elsif rank < 4
-      offset = 0
     else
-      offset = rank-4
+      offset = rank - 4
     end
+    offset = 0 if offset < 0
     Score.ranked_scores.offset(offset).limit(10)
   end
 

@@ -5,6 +5,10 @@ class Api::V1::ScoresController < ApplicationController
     render json: @scores
   end
 
+  def serialize(scores)
+    ActiveModelSerializers::SerializableResource.new(scores).as_json
+  end
+
   def create
     @score = Score.new({
       area_id: params[:area_id],
@@ -17,7 +21,7 @@ class Api::V1::ScoresController < ApplicationController
       @score.user = User.find_or_create_by(name: params[:username])
     end
     if @score.save
-      render json: @score.scores_around
+      render json: { score: serialize(@score), list: serialize(@score.scores_around) }
     else
       render json: @score.errors.full_messages
     end
