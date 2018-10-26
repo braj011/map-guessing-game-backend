@@ -13,7 +13,7 @@ class Image
     @lon = winner.longitude
     puts google_url
     data = open(self.google_url)
-    IO.copy_stream(data, "public/maps/#{@filename}.png")
+    IO.copy_stream(data, "tmp/#{@filename}.png")
   end
 
   def google_url

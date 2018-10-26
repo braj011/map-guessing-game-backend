@@ -21,7 +21,7 @@ class Api::V1::ScoresController < ApplicationController
     else
       render json: @score.errors.full_messages
     end
-    File.delete("public/maps/" + params[:filename].to_str + ".png")
+    File.delete("tmp/" + params[:filename].to_str + ".png")
   end
 
 end

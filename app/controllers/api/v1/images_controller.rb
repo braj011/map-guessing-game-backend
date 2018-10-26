@@ -5,7 +5,7 @@ class Api::V1::ImagesController < ApplicationController
 
   def show
     filename = params[:id]
-    send_file "public/maps/#{filename}.png", type: 'image/png', disposition: 'inline'
+    send_file "tmp/#{filename}.png", type: 'image/png', disposition: 'inline'
   end
 
 end
