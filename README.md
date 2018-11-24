@@ -5,7 +5,7 @@
 
 #### Ruby on Rails backend, with a Javascript frontend here: https://github.com/CiaranMn/map-guessing-game-frontend
 
-![Short clip of gameplay](demo.gif)
+<img src="demo.gif" alt="short clip of gameplay" width="60%" height="auto">
 
 ## How the game works
 - A game starts once a player has entered a name and either selects a difficulty, or hits enter (which begins an easy game)
