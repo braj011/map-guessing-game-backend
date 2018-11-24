@@ -12,6 +12,7 @@
 - A player guesses the location of the map from the 10 options to the right - the options being London constituencies
 - Points are deducted for incorrect guesses
 - The game ends when a correct guess is made or the timer runs out (at which point the player's score will be 1 if no incorrect guesses have been made)
+- The user may restart the game by clicking anywhere on the main container or pressing any key.
 - The player's final score, rank in the high scores table and surrounding scores are shown at the end of the game
 - On **easy** difficulty the names of train stations, schools, churches and businesses are labelled, and a fairly large area is shown (google zoom level 15). The score starts at 1,000 and 100 points are deducated for an incorrect guess
 - On **medium** difficulty the labels are removed. Zoom is the same as easy. Score starts at 1,500 with 150 points deducted for an incorrect guess
@@ -23,7 +24,7 @@ It has tables for areas (i.e. London areas), scores, and users. There is no user
 
 The areas table is seeded from csvs which contain around 120,000 London postcodes, downloaded from https://www.doogal.co.uk/UKPostcodes.php - to keep under Heroku's limit of 10,000 db rows for free dynos, only 1 in every 15 is inserted in the db for around 8,000 records.
 
-### The server follows a standard MVC pattern, with the following files in app/ doing the heavy lifting:
+### The following files in app/ do the heavy lifting:
 - **areas controller**: on get request picks a random sample of 10 London areas from the database, unique by constituency (to avoid duplicate options appearing to the player, who guesses by area constituency name), and instantiates a new Image with the difficulty and seed provided by the frontend, to fetch and save the appropriate static map from google. 
 - **image model** when instantiated will request a static map image from Google with custom styling, with zoom level and some labels depending on difficulty level, generates a filename - the last 5 digits of which correspond to the winning area's id after transformation by the seed so that the frontend can identify the correct answer from the 10 supplied - and writes the map image to the file system.
 
