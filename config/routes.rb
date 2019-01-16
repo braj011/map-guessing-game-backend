@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :areas, only: [:index]
       resources :users, only: [:create]
       resources :scores, only: [:index, :create]
+      resources :images, only: [:show]
     end
   end
 

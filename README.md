@@ -1,11 +1,11 @@
-# LDN Knowledge Backend (map-guessing-game)
+# LDN Knowledge Backend
 ## test your knowledge of London... improve it... or just guess wildly for fun!
 
 #### Game live at https://ldn-knowledge.herokuapp.com/ - the backend will take a few seconds to wake up on first play. It is playable once the high scores are displayed.
 
 #### Ruby on Rails backend, with a Javascript frontend here: https://github.com/CiaranMn/map-guessing-game-frontend
 
-![alt text](https://github.com/CiaranMn/map-guessing-game-backend/raw/master/demo.gif)
+<img src="demo.gif" alt="short clip of gameplay" width="60%" height="auto">
 
 ## How the game works
 - A game starts once a player has entered a name and either selects a difficulty, or hits enter (which begins an easy game)
